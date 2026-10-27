@@ -2,13 +2,20 @@
   "name": "skot-os",
   "version": "1.0.0",
   "private": true,
-  "description": "Static deployment clone of the SKOT airspace operations simulator",
+  "description": "SKOT OS — Low-altitude airspace coordination, planning and simulation",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "node scripts/serve.mjs public",
     "start": "node scripts/serve.mjs public",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/serve.mjs dist"
+  },
+  "homepage": "https://skot-os.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RAMNESH007/SKOT.git"
   }
 }

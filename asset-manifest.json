@@ -1,7 +1,5 @@
 {
-  "source_url": "https://skot-os.vercel.app/",
-  "captured_on": "2026-10-27",
-  "kind": "compiled deployment snapshot",
+  "project": "SKOT OS",
   "sha256": {
     "assets/index-BPF1tv8q.js": "6c7fdfce19ec3e64fba7414ad241b79c0c8278fe7d6f46428135b13f20ada56f",
     "assets/index-DieSvsXB.css": "23a4e9a5db54b7c0474bfc80db6076b6f7ec3cba8f942138033d5430568eadc6",

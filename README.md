@@ -1,60 +1,77 @@
 # SKOT OS — Sky Over Transmission
 
-A static deployment clone of **https://skot-os.vercel.app/**, captured on 27 October 2026. This is the airspace operations simulator. It is not a clone of the separate officialskot marketing website.
+**Low-altitude airspace coordination, planning and simulation.**
 
-## What this repository contains
+SKOT explores how existing ground infrastructure—roads, railways, rivers, canals and utility corridors—can provide a foundation for structured virtual aerial routes. Its goal is to support coordinated airspace for emergency response, autonomous delivery and future aerial mobility.
 
-The deployed HTML, JavaScript and CSS are preserved byte-for-byte in `public/`. This keeps the simulation interface and client-side behavior present in the captured deployment. The JavaScript is the compiled production bundle, not recovered React/TypeScript component source. Original source files, build configuration, server code and Git history were not available from the live URL.
+> We do not build new infrastructure. We unlock existing infrastructure.
 
-Small dependency-free Node scripts provide local serving and static build packaging. No npm dependencies or API keys are required by these scripts.
+[Launch SKOT OS](https://skot-os.vercel.app/) · [Project repository](https://github.com/RAMNESH007/SKOT)
 
-## Run locally
+## Application
 
-Install Node.js 20 or newer, open this directory in a terminal, and run:
+This repository contains the SKOT OS browser simulation, application assets, local server and deployment configuration. The interface supports exploring mapped operations, simulated aircraft, incidents and session reports. It runs in the browser, with online map and routing services supplying geographic context.
+
+The current application is a simulation environment. Operational aircraft integration and live flight control are outside this release.
+
+## Getting started
+
+Requirements: Node.js 20 or newer and an internet connection for map, routing and font services.
+
+Download the project using GitHub's **Code → Download ZIP**, extract it, and open a terminal in the project folder. Run:
 
 ```sh
 npm start
 ```
 
-Open http://localhost:3000. Internet access is needed for the external services below. Do not open `index.html` directly using a file URL.
+Open [localhost:3000](http://localhost:3000). The local server and build scripts use Node.js built-in modules and require no package installation.
 
-For a deployment build:
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Serve the application locally |
+| `npm run dev` | Serve the application from `public/` |
+| `npm run build` | Prepare deployment files in `dist/` |
+| `npm run preview` | Serve the prepared `dist/` directory |
 
-```sh
-npm run build
-npm run preview
-```
+Stop the running server before starting another on the same port. Set the `PORT` environment variable to use a different port.
 
-The output is `dist/`. Stop the first server before running preview on the same port, or set `PORT` to another port.
+## Project structure
 
-## Clone this repository
+| Path | Contents |
+| --- | --- |
+| `public/index.html` | Application entry page |
+| `public/assets/` | Compiled application JavaScript and styles |
+| `scripts/serve.mjs` | Local HTTP server |
+| `scripts/build.mjs` | Static deployment packaging |
+| `vercel.json` | Vercel build and output settings |
+| `asset-manifest.json` | SHA-256 checksums for application assets |
+| `VALIDATION.md` | Completed checks and verification status |
 
-```sh
-git clone https://github.com/RAMNESH007/SKOT.git
-cd SKOT
-npm start
-```
+The build command packages the application assets in `public/` into `dist/`.
 
-Open http://localhost:3000. The `main` branch contains the captured simulator and local setup.
+## Deployment
 
-## Deploy on Vercel
+Import **RAMNESH007/SKOT** into Vercel with these settings:
 
-Import the GitHub repository into Vercel. Use the Other framework preset, build command `npm run build`, and output directory `dist`. These values are also specified in `vercel.json`. This creates a separate deployment; it does not modify the original website.
+| Setting | Value |
+| --- | --- |
+| Framework preset | Other |
+| Build command | `npm run build` |
+| Output directory | `dist` |
 
-## External services
+These build settings are included in `vercel.json`. The `dist/` directory can also be served by a static web host.
 
-The captured app references:
+## Technology and services
 
-- Google Fonts for Inter and JetBrains Mono.
-- MapLibre GL 4.7.1 CSS on unpkg; MapLibre JavaScript is in the application bundle.
+- React-based browser interface and MapLibre GL map rendering.
+- Node.js for local serving and deployment packaging.
 - CARTO/OpenStreetMap-based dark map tiles.
-- Esri World Imagery and boundary/label tiles.
-- The public OSRM routing endpoint for road geometry.
+- Esri imagery and geographic labels.
+- OSRM road-route geometry.
+- Inter and JetBrains Mono through Google Fonts.
 
-Availability, usage limits and terms of those providers apply. This is not an offline copy of map data. Map and route availability can differ by network. The clone does not add a backend or real aircraft control, and simulation behavior is not evidence of operational flight-safety capability.
+External services require network access and remain subject to their providers' availability and terms. Third-party library notices and map attribution are retained.
 
-## Editing and provenance
+## Contact
 
-Edit `public/index.html` or CSS for small changes. For maintainable feature development, obtain the original component source and replace the compiled snapshot with its build pipeline. No top-level open-source license is asserted for the captured app. Existing third-party notices in the bundle are retained; original authors' rights remain unchanged.
-
-`snapshot.json` records the capture URL and SHA-256 hashes so the deployed assets can be checked against this snapshot.
+[officialskot.org@gmail.com](mailto:officialskot.org@gmail.com)
